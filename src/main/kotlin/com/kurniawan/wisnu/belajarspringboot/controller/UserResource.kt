@@ -1,14 +1,11 @@
-package com.kurniawan.wisnu.belajarspringboot
+package com.kurniawan.wisnu.belajarspringboot.controller
 
-import org.springframework.data.jpa.repository.JpaRepository
+import com.kurniawan.wisnu.belajarspringboot.model.Users
+import com.kurniawan.wisnu.belajarspringboot.repository.UsersRepository
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
 
 @RestController
 @RequestMapping("/rest/users")
@@ -25,11 +22,3 @@ class UsersResource(val usersRepository: UsersRepository) {
     }
 }
 
-@Entity
-class Users(val name: String = "",
-            val salary: Int = 2000,
-            @Id
-            @GeneratedValue(strategy = GenerationType.AUTO)
-            val id: Long = 0)
-
-interface UsersRepository : JpaRepository<Users, Long>
